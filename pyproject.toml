@@ -1,0 +1,26 @@
+[project]
+name = "feast-test"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "Matt Green", email = "emgeee@users.noreply.github.com" }
+]
+dependencies = [
+    "feast>=0.40.1",
+    "pandas>=2.2.3",
+    "pandas-stubs>=2.2",
+    "denormalized==0.0.4",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[tool.mypy-pyarrow]
+ignore_missing_imports = true
+
+[tool.mypy-denormalized]
+ignore_missing_imports = true
+
+[tool.pyright]
+reportMissingTypeStubs = false
+reportUnknownMemberType = false
+reportMissingParameterType = false
