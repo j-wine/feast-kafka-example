@@ -1,14 +1,16 @@
-from datetime import timedelta
 from pathlib import Path
 
-from feast import Entity, FeatureView, Field, FileSource, PushSource
+from feast import (Entity, FeatureService, FeatureView, Field, FileSource,
+                   PushSource)
 from feast.types import Float64, Int64, String, UnixTimestamp
 from feast.value_type import ValueType
+
+from feast_test.stream_job import ds
 
 # Define an entity for the sensor
 sensor = Entity(
     name="sensor",
-    value_type=ValueType.STRING, 
+    value_type=ValueType.STRING,
     join_keys=["sensor_name"],
     description="A unique identifier for each sensor",
 )
@@ -29,6 +31,7 @@ sensor_stats_push_source = PushSource(
 sensor_stats_view = FeatureView(
     name="sensor_statistics",
     entities=[sensor],
+    # schema=ds.get_feast_schema(),
     schema=[
         Field(name="sensor_name", dtype=String),
         Field(name="count", dtype=Int64),
@@ -40,4 +43,11 @@ sensor_stats_view = FeatureView(
     ],
     source=sensor_stats_push_source,
     online=True,
+)
+
+# Define a FeatureService
+sensor_feature_service = FeatureService(
+    name="sensor_service",
+    features=[sensor_stats_view],
+    description="Feature service for retrieving sensor statistics",
 )
