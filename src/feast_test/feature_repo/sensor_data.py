@@ -31,16 +31,7 @@ sensor_stats_push_source = PushSource(
 sensor_stats_view = FeatureView(
     name="sensor_statistics",
     entities=[sensor],
-    # schema=ds.get_feast_schema(),
-    schema=[
-        Field(name="sensor_name", dtype=String),
-        Field(name="count", dtype=Int64),
-        Field(name="min", dtype=Float64),
-        Field(name="max", dtype=Float64),
-        Field(name="average", dtype=Float64),
-        Field(name="window_start_time", dtype=UnixTimestamp),
-        Field(name="window_end_time", dtype=UnixTimestamp),
-    ],
+    schema=ds.get_feast_schema(),
     source=sensor_stats_push_source,
     online=True,
 )
