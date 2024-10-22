@@ -36,13 +36,13 @@ dask-expr==1.1.14
 datafusion==41.0.0
     # via denormalized
 denormalized==0.0.4
-    # via feast-test (pyproject.toml)
+    # via denormalized-feast-example (pyproject.toml)
 dill==0.3.8
     # via feast
 fastapi==0.115.0
     # via feast
 feast==0.40.1
-    # via feast-test (pyproject.toml)
+    # via denormalized-feast-example (pyproject.toml)
 fsspec==2024.9.0
     # via dask
 gunicorn==23.0.0
@@ -88,10 +88,10 @@ pandas==2.2.3
     # via
     #   dask
     #   dask-expr
+    #   denormalized-feast-example (pyproject.toml)
     #   feast
-    #   feast-test (pyproject.toml)
 pandas-stubs==2.2.2.240909
-    # via feast-test (pyproject.toml)
+    # via denormalized-feast-example (pyproject.toml)
 partd==1.4.2
     # via dask
 protobuf==4.25.5

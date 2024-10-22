@@ -4,7 +4,7 @@ from pathlib import Path
 
 from feast import FeatureStore
 
-from feast_test.stream_job import ds
+from feast_example.stream_job import ds
 
 if __name__ == "__main__":
 

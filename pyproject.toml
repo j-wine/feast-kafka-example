@@ -1,7 +1,7 @@
 [project]
-name = "feast-test"
+name = "denormalized-feast-example"
 version = "0.1.0"
-description = "Add your description here"
+description = "Example integration of using denormalized to write features to feast"
 authors = [
     { name = "Matt Green", email = "emgeee@users.noreply.github.com" }
 ]
