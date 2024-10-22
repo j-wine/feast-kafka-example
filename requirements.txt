@@ -35,7 +35,7 @@ dask-expr==1.1.14
     # via dask
 datafusion==41.0.0
     # via denormalized
-denormalized==0.0.4
+denormalized==0.0.5
     # via denormalized-feast-example (pyproject.toml)
 dill==0.3.8
     # via feast
