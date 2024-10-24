@@ -1,11 +1,10 @@
 from pathlib import Path
 
-from feast import (Entity, FeatureService, FeatureView, Field, FileSource,
+from feast import (Entity, FeatureService, FeatureView, FileSource,
                    PushSource)
-from feast.types import Float64, Int64, String, UnixTimestamp
 from feast.value_type import ValueType
 
-from feast_test.stream_job import ds
+from feast_example.stream_job import ds
 
 # Define an entity for the sensor
 sensor = Entity(
@@ -19,7 +18,6 @@ sensor = Entity(
 sensor_stats_source = FileSource(
     path=str(Path(__file__).parent / "./data/sensor_stats.parquet"),
     timestamp_field="window_start_time",
-    created_timestamp_column="created",
 )
 
 sensor_stats_push_source = PushSource(

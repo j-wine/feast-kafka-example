@@ -3,7 +3,7 @@
 # pyright: reportUnknownMemberType=false
 import json
 
-from denormalized import Context
+from denormalized import Context, FeastDataStream
 from denormalized.datafusion import col
 from denormalized.datafusion import functions as f
 from denormalized.datafusion import lit
@@ -16,19 +16,20 @@ sample_event = {
     "reading": 0.0,
 }
 
-ctx = Context()
-ds = ctx.from_topic("temperature", json.dumps(sample_event), bootstrap_server)
-
-# pyright: reportUnknownMemberType=false
-ds = ds.window(
-    [col("sensor_name")],
-    [
-        f.count(col("reading"), distinct=False, filter=None).alias("count"),
-        f.min(col("reading")).alias("min"),
-        f.max(col("reading")).alias("max"),
-        f.avg(col("reading")).alias("average"),
-    ],
-    1000,
-    None,
-).filter(col("max") > (lit(113)))
-
+ds = (
+    FeastDataStream(
+        Context().from_topic("temperature", json.dumps(sample_event), bootstrap_server)
+    )
+    .window(
+        [col("sensor_name")],
+        [
+            f.count(col("reading"), distinct=False, filter=None).alias("count"),
+            f.min(col("reading")).alias("min"),
+            f.max(col("reading")).alias("max"),
+            f.avg(col("reading")).alias("average"),
+        ],
+        1000,
+        None,
+    )
+    .filter(col("max") > (lit(113)))
+)
