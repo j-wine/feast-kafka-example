@@ -1,6 +1,7 @@
-# Feast <> Denormalized Test
+# Feast + Denormalized Example
 
-This is a proof of concept repo for writing features to feast using the denormalized streaming engine. Tested with python v3.12.4 and feast v0.40.1.
+This repo contains an example showing how to use [denormalized](https://github.com/probably-nothing-labs/denormalized) to stream features into a feast online store.
+Tested with python v3.12.4 and feast v0.40.1.
 
 ## Setup
 

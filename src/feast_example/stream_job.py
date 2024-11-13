@@ -9,6 +9,7 @@ from denormalized.datafusion import functions as f
 from denormalized.datafusion import lit
 
 bootstrap_server = "localhost:9092"
+timestamp_column = "occurred_at_ms"
 
 sample_event = {
     "occurred_at_ms": 100,
@@ -18,7 +19,12 @@ sample_event = {
 
 ds = (
     FeastDataStream(
-        Context().from_topic("temperature", json.dumps(sample_event), bootstrap_server)
+        Context().from_topic(
+            "temperature",
+            json.dumps(sample_event),
+            bootstrap_server,
+            timestamp_column,
+        )
     )
     .window(
         [col("sensor_name")],
